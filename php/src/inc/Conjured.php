@@ -8,10 +8,10 @@ use Inventory\Normal\Normal;
 
 class Conjured extends Normal
 {    
-    /**
-     * @var int
-     */
-    public static $decreaseSpeed = 2;
+    // /**
+    //  * @var int
+    //  */
+    // public static $decreaseSpeed = 2;
 
     public static function update($item): void
     {
