@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inventory\Brie;
 
 class Brie
@@ -25,11 +27,16 @@ class Brie
         self::$sell_in = $item->sell_in;
         self::$quality = $item->quality;
     }
-    
-    public static function create($item)
+
+    public static function create($item): void
     {
-        if ($item->quality < 50) ++$item->quality;
-        if ($item->quality >= 50) $item->quality = 50;
-        else if ($item->sell_in <= 0) ++$item->quality;
+        if ($item->quality < 50) {
+            ++$item->quality;
+        }
+        if ($item->quality >= 50) {
+            $item->quality = 50;
+        } elseif ($item->sell_in <= 0) {
+            ++$item->quality;
+        }
     }
 }

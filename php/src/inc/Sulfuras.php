@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inventory\Sulfuras;
 
 class Sulfuras
@@ -7,22 +9,26 @@ class Sulfuras
     /**
      * @var string
      */
-    private static $name;
+    public static $name;
 
     /**
      * @var int
      */
-    private static $sell_in;
+    public static $sell_in;
 
     /**
      * @var int
      */
-    private static $quality;
+    public static $quality;
 
     public function __construct($item)
     {
         self::$name = $item->name;
         self::$sell_in = $item->sell_in;
         self::$quality = $item->quality;
+    }
+
+    public static function create(): void
+    {
     }
 }

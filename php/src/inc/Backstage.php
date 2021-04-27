@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Inventory\Backstage;
 
 class Backstage
@@ -25,15 +27,21 @@ class Backstage
         self::$sell_in = $item->sell_in;
         self::$quality = $item->quality;
     }
-    
-    public static function create($item)
+
+    public static function create($item): void
     {
         if ($item->quality < 50) {
             ++$item->quality;
-            if ($item->sell_in > 5 && $item->sell_in <= 10) $item->quality += 1;
-            else if ($item->sell_in <= 5 && $item->sell_in > 0) $item->quality += 2;    
+            if ($item->sell_in > 5 && $item->sell_in <= 10) {
+                ++$item->quality;
+            } elseif ($item->sell_in <= 5 && $item->sell_in > 0) {
+                $item->quality += 2;
+            }
         }
-        if ($item->quality > 50 && $item->sell_in > 0) $item->quality = 50;
-        else if ($item->sell_in <= 0) $item->quality = 0;
+        if ($item->quality > 50 && $item->sell_in > 0) {
+            $item->quality = 50;
+        } elseif ($item->sell_in <= 0) {
+            $item->quality = 0;
+        }
     }
 }
