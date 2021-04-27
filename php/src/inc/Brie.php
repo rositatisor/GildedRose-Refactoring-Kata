@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Inventory\Brie;
 
-class Brie
+use Inventory\Normal\Normal;
+
+class Brie extends Normal
 {
     /**
      * @var string
@@ -28,15 +30,12 @@ class Brie
         self::$quality = $item->quality;
     }
 
-    public static function create($item): void
+    public static function update($item): void
     {
-        if ($item->quality < 50) {
+        self::increaseOrStay($item);
+        if ($item->sell_in <= 0 && $item->quality < self::$max) {
             ++$item->quality;
         }
-        if ($item->quality >= 50) {
-            $item->quality = 50;
-        } elseif ($item->sell_in <= 0) {
-            ++$item->quality;
-        }
+        --$item->sell_in;
     }
 }

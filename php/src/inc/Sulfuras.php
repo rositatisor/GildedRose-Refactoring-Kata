@@ -27,8 +27,4 @@ class Sulfuras
         self::$sell_in = $item->sell_in;
         self::$quality = $item->quality;
     }
-
-    public static function create(): void
-    {
-    }
 }

@@ -26,22 +26,18 @@ final class GildedRose
         foreach ($this->items as $item) {
             switch ($item->name) {
                 case 'Sulfuras, Hand of Ragnaros':
-                    Sulfuras::create($item);
+                    new Sulfuras($item);
                     break;
                 case 'Backstage passes to a TAFKAL80ETC concert':
-                    Backstage::create($item);
+                    Backstage::update($item);
                     break;
                 case 'Aged Brie':
-                    Brie::create($item);
+                    Brie::update($item);
                     break;
                 // // case 'Conjured Mana Cake':
-                //     // ConjuredManaCake::create();
+                //     // ConjuredManaCake::update();
                 default:
-                    Normal::create($item);
-            }
-
-            if ($item->name !== 'Sulfuras, Hand of Ragnaros') {
-                --$item->sell_in;
+                    Normal::update($item);
             }
         }
     }
