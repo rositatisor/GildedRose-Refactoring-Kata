@@ -11,12 +11,16 @@ class Backstage extends Normal
     public static function update($item): void
     {
         self::increaseOrStay($item);
-        if ($item->sell_in <= 0) $item->quality = self::$min;
-        elseif ($item->quality < self::$max) self::additionalIncrease($item);
+        
+        if ($item->sell_in <= 0) {
+            $item->quality = self::$min;
+        } elseif ($item->quality < self::$max) {
+            self::additionalIncrease($item);
+        }
         --$item->sell_in;
     }
 
-    public static function additionalIncrease($item)
+    public static function additionalIncrease($item): void
     {
         if ($item->sell_in > 5 && $item->sell_in <= 10) {
             ++$item->quality;

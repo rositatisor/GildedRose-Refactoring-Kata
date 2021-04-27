@@ -7,7 +7,7 @@ namespace Inventory\Conjured;
 use Inventory\Normal\Normal;
 
 class Conjured extends Normal
-{    
+{
     // /**
     //  * @var int
     //  */

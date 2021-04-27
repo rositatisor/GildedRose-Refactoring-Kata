@@ -25,7 +25,7 @@ class Normal
      * @var int
      */
     public static $max = 50;
-    
+
     /**
      * @var int
      */
@@ -51,16 +51,24 @@ class Normal
 
     public static function increaseOrStay($item): void
     {
-        if ($item->quality < self::$max) ++$item->quality;
-        else $item->quality = self::$max;
+        if ($item->quality < self::$max) {
+            ++$item->quality;
+        } else {
+            $item->quality = self::$max;
+        }
     }
 
     public static function decrease($item, $decreaseSpeed): void
     {
         if ($item->quality > 1) {
-            if ($item->sell_in > 0) $item->quality -= 1 * $decreaseSpeed;
-            else $item->quality -= 2 * $decreaseSpeed;
-        } elseif ($item->quality === 1) --$item->quality;
+            if ($item->sell_in > 0) {
+                $item->quality -= 1 * $decreaseSpeed;
+            } else {
+                $item->quality -= 2 * $decreaseSpeed;
+            }
+        } elseif ($item->quality === 1) {
+            --$item->quality;
+        }
         --$item->sell_in;
     }
 }
