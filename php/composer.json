@@ -6,7 +6,10 @@
     },
     "autoload": {
         "psr-4": {
-            "GildedRose\\": "src/"
+            "GildedRose\\": "src/",
+            "Inventory\\Sulfuras\\": "src/inc",
+            "Inventory\\Normal\\": "src/inc",
+            "Inventory\\Backstage\\": "src/inc"
         }
     },
     "autoload-dev": {
