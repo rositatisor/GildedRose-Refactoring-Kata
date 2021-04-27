@@ -6,6 +6,7 @@ namespace GildedRose;
 
 use Inventory\Backstage\Backstage;
 use Inventory\Brie\Brie;
+use Inventory\Conjured\Conjured;
 use Inventory\Normal\Normal;
 use Inventory\Sulfuras\Sulfuras;
 
@@ -34,8 +35,9 @@ final class GildedRose
                 case 'Aged Brie':
                     Brie::update($item);
                     break;
-                // // case 'Conjured Mana Cake':
-                //     // ConjuredManaCake::update();
+                case 'Conjured Mana Cake':
+                    Conjured::update($item);
+                    break;
                 default:
                     Normal::update($item);
             }

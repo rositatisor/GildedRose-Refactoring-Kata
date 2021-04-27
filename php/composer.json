@@ -10,7 +10,8 @@
             "Inventory\\Sulfuras\\": "src/inc",
             "Inventory\\Normal\\": "src/inc",
             "Inventory\\Backstage\\": "src/inc",
-            "Inventory\\Brie\\": "src/inc"
+            "Inventory\\Brie\\": "src/inc",
+            "Inventory\\Conjured\\": "src/inc"
         }
     },
     "autoload-dev": {
