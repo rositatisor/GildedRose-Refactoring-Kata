@@ -25,7 +25,16 @@ class Normal
      * @var int
      */
     public static $max = 50;
+    
+    /**
+     * @var int
+     */
     public static $min = 0;
+
+    /**
+     * @var int
+     */
+    public static $decreaseSpeed = 1;
 
     public function __construct($item)
     {
@@ -37,18 +46,21 @@ class Normal
 
     public static function update($item): void
     {
-        if ($item->quality === 1 || ($item->sell_in > 0 && $item->quality > 0)) {
-            --$item->quality;
-        }
-        if ($item->sell_in <= 0 && $item->quality > 1) {
-            $item->quality -= 2;
-        }
-        --$item->sell_in;
+        self::decrease($item, self::$decreaseSpeed);
     }
 
     public static function increaseOrStay($item): void
     {
         if ($item->quality < self::$max) ++$item->quality;
         else $item->quality = self::$max;
+    }
+
+    public static function decrease($item, $decreaseSpeed): void
+    {
+        if ($item->quality > 1) {
+            if ($item->sell_in > 0) $item->quality -= 1 * $decreaseSpeed;
+            else $item->quality -= 2 * $decreaseSpeed;
+        } elseif ($item->quality === 1) --$item->quality;
+        --$item->sell_in;
     }
 }
