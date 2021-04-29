@@ -34,6 +34,11 @@ class Normal
     /**
      * @var int
      */
+    public static $concert = 0;
+
+    /**
+     * @var int
+     */
     public static $decreaseSpeed = 1;
 
     public function __construct($item)
@@ -61,9 +66,9 @@ class Normal
     public static function decrease($item, $decreaseSpeed): void
     {
         if ($item->quality > 1) {
-            if ($item->sell_in > 0) {
+            if ($item->sell_in > self::$concert) {
                 $item->quality -= 1 * $decreaseSpeed;
-            } else {
+            } elseif ($item !== 1) {
                 $item->quality -= 2 * $decreaseSpeed;
             }
         } elseif ($item->quality === 1) {

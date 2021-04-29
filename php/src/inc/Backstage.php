@@ -12,7 +12,7 @@ class Backstage extends Normal
     {
         self::increaseOrStay($item);
         
-        if ($item->sell_in <= 0) {
+        if ($item->sell_in <= self::$concert) {
             $item->quality = self::$min;
         } elseif ($item->quality < self::$max) {
             self::additionalIncrease($item);

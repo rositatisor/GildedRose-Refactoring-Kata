@@ -33,7 +33,7 @@ class Brie extends Normal
     public static function update($item): void
     {
         self::increaseOrStay($item);
-        if ($item->sell_in <= 0 && $item->quality < self::$max) {
+        if ($item->sell_in <= self::$concert && $item->quality < self::$max) {
             ++$item->quality;
         }
         --$item->sell_in;
